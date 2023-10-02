@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function Register() {
@@ -33,6 +34,10 @@ export default function Register() {
             Register
           </button>
         </form>
+        <div className="flex gap-2 text-xs">
+          <p className="text-gray-400">Already have an account?</p>
+          <Link href="/login">Sign In</Link>
+        </div>
       </div>
     </div>
   );
