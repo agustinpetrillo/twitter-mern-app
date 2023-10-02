@@ -8,3 +8,7 @@ interface IconsProps {
 interface HeaderProps {
   name: string;
 }
+
+interface LoginAndRegisterProps {
+  close: () => void;
+}

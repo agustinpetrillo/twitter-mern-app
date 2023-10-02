@@ -1,14 +1,19 @@
 import Link from "next/link";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Login() {
+export default function Login({ close }: LoginAndRegisterProps) {
   const onSubmit = () => {};
   return (
     <div className="absolute top-0 left-0 flex items-center justify-center w-full min-h-screen bg-slate-900/60">
       <div className="flex flex-col items-center max-w-lg p-10 space-y-3 bg-black rounded-lg">
         <div className="flex items-center justify-between w-full mb-3">
           <h1 className="text-xl font-semibold">Login</h1>
-          <AiOutlineClose size={20} color="white" className="cursor-pointer" />
+          <AiOutlineClose
+            size={20}
+            color="white"
+            className="cursor-pointer"
+            onClick={() => close()}
+          />
         </div>
         <form className="flex flex-col gap-2">
           <input
