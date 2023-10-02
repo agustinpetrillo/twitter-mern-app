@@ -16,7 +16,7 @@ export default function Register() {
           />
           <input
             type="text"
-            placeholder="Last name"
+            placeholder="Username"
             className="p-2 text-black rounded-md outline-none"
           />
           <input
@@ -30,7 +30,7 @@ export default function Register() {
             className="p-2 mb-3 text-black rounded-md outline-none"
           />
           <button className="p-4 transition-all bg-blue-500 rounded-full hover:bg-opacity-70">
-            Submit
+            Register
           </button>
         </form>
       </div>
