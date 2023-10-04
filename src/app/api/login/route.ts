@@ -2,20 +2,17 @@ import bcrypt from "bcrypt";
 import prisma from "@/libs/prismadb";
 
 export async function POST(req: Request) {
-  const body = await req.json();
+  const { email, password } = await req.json();
   try {
     const user = await prisma.user.findFirst({
       where: {
-        email: body.email,
+        email,
       },
     });
 
-    const hashedPassword = await bcrypt.compare(
-      user.hashedPassword,
-      body.password
-    );
+    const hashedPassword = await bcrypt.compare(user.hashedPassword, password);
 
-    if (user && hashedPassword === body.password) {
+    if (user && hashedPassword === password) {
       const { hashedPassword, ...userNotPass } = user;
       return Response.json(userNotPass);
     }
