@@ -10,7 +10,7 @@ interface HeaderProps {
 }
 
 interface LoginAndRegisterProps {
-  close?: () => void;
+  close: () => void;
 }
 
 interface UserRegister {

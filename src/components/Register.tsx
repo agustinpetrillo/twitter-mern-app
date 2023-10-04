@@ -4,6 +4,7 @@ import { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
 import { signIn } from "next-auth/react";
+import { toast } from "react-hot-toast";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function Register({ close }: LoginAndRegisterProps) {
@@ -26,12 +27,14 @@ export default function Register({ close }: LoginAndRegisterProps) {
         username: userRegister.username,
       });
 
+      toast.success("Account created.");
+
       signIn("credentials", {
         email: userRegister.email,
         password: userRegister.password,
       });
     } catch (error) {
-      console.log(error);
+      toast.error("Something went wrong.");
     } finally {
       setIsLoading(false);
     }
