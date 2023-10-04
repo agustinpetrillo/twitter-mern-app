@@ -1,8 +1,33 @@
+import { useState } from "react";
 import Link from "next/link";
+import axios from "axios";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function Register({ close }: LoginAndRegisterProps) {
-  const onSubmit = () => {};
+  const [userRegister, setUserRegister] = useState<UserRegister>({
+    email: "",
+    password: "",
+    name: "",
+    username: "",
+  });
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+
+  const onSubmit = async () => {
+    setIsLoading(true);
+
+    try {
+      await axios.post("/api/register", {
+        email: userRegister.email,
+        password: userRegister.password,
+        name: userRegister.name,
+        username: userRegister.username,
+      });
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
 
   return (
     <div className="absolute top-0 left-0 flex items-center justify-center w-full min-h-screen bg-slate-900/60">
@@ -16,28 +41,52 @@ export default function Register({ close }: LoginAndRegisterProps) {
             onClick={() => close()}
           />
         </div>
-        <form className="flex flex-col gap-2">
+        <form className="flex flex-col gap-2" onSubmit={() => onSubmit()}>
           <input
             type="text"
             placeholder="Name"
+            onChange={(e) =>
+              setUserRegister((prevState) => ({
+                ...prevState,
+                name: e.target.value,
+              }))
+            }
             name="name"
             className="p-2 text-black rounded-md outline-none"
           />
           <input
             type="text"
             placeholder="Username"
+            onChange={(e) =>
+              setUserRegister((prevState) => ({
+                ...prevState,
+                username: e.target.value,
+              }))
+            }
             name="username"
             className="p-2 text-black rounded-md outline-none"
           />
           <input
             type="email"
             placeholder="Email"
+            onChange={(e) =>
+              setUserRegister((prevState) => ({
+                ...prevState,
+                email: e.target.value,
+              }))
+            }
             name="email"
             className="p-2 text-black rounded-md outline-none"
           />
           <input
             type="password"
             placeholder="Password"
+            onChange={(e) =>
+              setUserRegister((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }))
+            }
             name="password"
             className="p-2 mb-3 text-black rounded-md outline-none"
           />

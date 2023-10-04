@@ -12,3 +12,10 @@ interface HeaderProps {
 interface LoginAndRegisterProps {
   close: () => void;
 }
+
+interface UserRegister {
+  username: string;
+  name: string;
+  email: string;
+  password: string;
+}
