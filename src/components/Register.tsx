@@ -1,6 +1,9 @@
+"use client";
+
 import { useState } from "react";
 import Link from "next/link";
 import axios from "axios";
+import { signIn } from "next-auth/react";
 import { AiOutlineClose } from "react-icons/ai";
 
 export default function Register({ close }: LoginAndRegisterProps) {
@@ -21,6 +24,11 @@ export default function Register({ close }: LoginAndRegisterProps) {
         password: userRegister.password,
         name: userRegister.name,
         username: userRegister.username,
+      });
+
+      signIn("credentials", {
+        email: userRegister.email,
+        password: userRegister.password,
       });
     } catch (error) {
       console.log(error);
