@@ -8,6 +8,7 @@ import bcrypt from "bcrypt";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
 import prisma from "@/libs/prismadb";
+import axios from "axios";
 
 export const authOptions: NextAuthOptions = {
   adapter: PrismaAdapter(prisma),
@@ -26,6 +27,17 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
+        // const res = axios.post("/api/login", {
+        //   email: credentials?.email,
+        //   password: credentials?.password,
+        // });
+
+        // const user = (await res).data;
+
+        // if (user) return user;
+
+        // return null;
+
         if (!credentials?.email || !credentials?.password)
           throw new Error("Invalid credentials");
 
