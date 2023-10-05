@@ -19,22 +19,22 @@ export default async function RootLayout({
 }: {
   children: React.ReactNode;
 }) {
-  // const session = await getServerSession();
+  const session = await getServerSession();
   return (
     <html lang="en">
       <body className={`${inter.className} min-h-screen`}>
-        {/* <SessionProvider session={session}> */}
-        <Toaster />
-        <div className="container h-full max-w-6xl mx-auto xl:px-30">
-          <div className="grid h-full grid-cols-4">
-            <Sidebar />
-            <div className="col-span-3 lg:col-span-2 border-x border-neutral-800">
-              {children}
+        <SessionProvider session={session}>
+          <Toaster />
+          <div className="container h-full max-w-6xl mx-auto xl:px-30">
+            <div className="grid h-full grid-cols-4">
+              <Sidebar />
+              <div className="col-span-3 lg:col-span-2 border-x border-neutral-800">
+                {children}
+              </div>
+              <Followbar />
             </div>
-            <Followbar />
           </div>
-        </div>
-        {/* </SessionProvider> */}
+        </SessionProvider>
       </body>
     </html>
   );
