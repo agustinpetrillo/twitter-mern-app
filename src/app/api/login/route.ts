@@ -1,5 +1,6 @@
 import bcrypt from "bcrypt";
 import prisma from "@/libs/prismadb";
+import { NextResponse } from "next/server";
 
 export async function POST(req: Request) {
   const { email, password } = await req.json();
@@ -10,16 +11,18 @@ export async function POST(req: Request) {
       },
     });
 
-    const hashedPassword = await bcrypt.compare(user.hashedPassword, password);
+    const isCorrectPassword = await bcrypt.compare(
+      user.hashedPassword,
+      password
+    );
 
-    if (user && hashedPassword === password) {
-      const { hashedPassword, ...userNotPass } = user;
-      return Response.json(userNotPass);
+    if (user) {
+      return NextResponse.json({ user }, { status: 201 });
     }
 
-    return Response.json(null);
+    return NextResponse.json(null);
   } catch (error) {
     console.log(error);
-    return Response.json(error);
+    return NextResponse.json({ error }, { status: 500 });
   }
 }

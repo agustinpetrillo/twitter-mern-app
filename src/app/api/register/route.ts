@@ -1,7 +1,8 @@
 import bcrypt from "bcrypt";
 import prisma from "@/libs/prismadb";
+import { NextResponse } from "next/server";
 
-export async function POST(req: Request) {
+export async function POST(req: Request, res: Response) {
   const { password, email, username, name } = await req.json();
 
   try {
@@ -19,8 +20,8 @@ export async function POST(req: Request) {
       },
     });
 
-    return Response.json({ user }, { status: 201 });
-  } catch (error) {
-    return Response.json({ error }, { status: 500 });
+    return NextResponse.json({ user }, { status: 201 });
+  } catch (error: any) {
+    return NextResponse.json({ error: error.message }, { status: 500 });
   }
 }
