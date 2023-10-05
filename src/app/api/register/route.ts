@@ -11,6 +11,14 @@ export async function POST(req: Request, res: Response) {
     if (!password || !email || !username || !name)
       return Response.json({ error: "Invalid credentials" }, { status: 422 });
 
+    const existingUser = await prisma.user.findFirst({ where: { email } });
+
+    if (existingUser)
+      return NextResponse.json(
+        { message: "Existing email, please login" },
+        { status: 403 }
+      );
+
     const user = await prisma.user.create({
       data: {
         email,
