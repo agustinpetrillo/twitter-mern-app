@@ -1,13 +1,14 @@
 "use client";
 
 import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Link from "next/link";
 import axios from "axios";
 import { signIn } from "next-auth/react";
 import { toast } from "react-hot-toast";
 import { AiOutlineClose } from "react-icons/ai";
 
-export default function Register({ close }: LoginAndRegisterProps) {
+export default function Register() {
   const [userRegister, setUserRegister] = useState<UserRegister>({
     email: "",
     password: "",
@@ -15,6 +16,7 @@ export default function Register({ close }: LoginAndRegisterProps) {
     username: "",
   });
   const [isLoading, setIsLoading] = useState<boolean>(false);
+  const router = useRouter();
 
   const onSubmit = async () => {
     setIsLoading(true);
@@ -33,6 +35,8 @@ export default function Register({ close }: LoginAndRegisterProps) {
         email: userRegister.email,
         password: userRegister.password,
       });
+
+      router.push("/");
     } catch (error) {
       toast.error("Something went wrong.");
     } finally {
@@ -45,12 +49,13 @@ export default function Register({ close }: LoginAndRegisterProps) {
       <div className="flex flex-col items-center max-w-lg p-10 space-y-3 bg-black rounded-lg">
         <div className="flex items-center justify-between w-full mb-3">
           <h1 className="text-xl font-semibold">Register</h1>
-          <AiOutlineClose
-            size={20}
-            color="white"
-            className="cursor-pointer"
-            onClick={() => close()}
-          />
+          <Link href="/">
+            <AiOutlineClose
+              size={20}
+              color="white"
+              className="cursor-pointer"
+            />
+          </Link>
         </div>
         <form className="flex flex-col gap-2" onSubmit={() => onSubmit()}>
           <input
