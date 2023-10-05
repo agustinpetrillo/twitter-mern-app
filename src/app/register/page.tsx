@@ -36,7 +36,7 @@ export default function Register() {
         password: userRegister.password,
       });
 
-      return router.push("/");
+      router.push("/");
     } catch (error) {
       toast.error("Something went wrong.");
     } finally {
@@ -57,7 +57,11 @@ export default function Register() {
             />
           </Link>
         </div>
-        <form className="flex flex-col gap-2" onSubmit={() => onSubmit()}>
+        <form
+          className="flex flex-col gap-2"
+          onSubmit={() => onSubmit()}
+          method="POST"
+        >
           <input
             type="text"
             placeholder="Name"

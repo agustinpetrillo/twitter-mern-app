@@ -6,8 +6,8 @@ import { NextResponse } from "next/server";
 export async function POST(req: Request) {
   const { email, password } = await req.json();
   try {
-    if (!email && !password)
-      return NextResponse.json({ message: "Invalid data" }, { status: 422 });
+    // if (!email && !password)
+    //   return NextResponse.json({ message: "Invalid data" }, { status: 422 });
 
     const user = await prisma.user.findFirst({
       where: {

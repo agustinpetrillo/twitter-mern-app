@@ -53,7 +53,11 @@ export default function Login() {
             />
           </Link>
         </div>
-        <form className="flex flex-col gap-2" onSubmit={() => onSubmit()}>
+        <form
+          className="flex flex-col gap-2"
+          onSubmit={() => onSubmit()}
+          method="POST"
+        >
           <input
             type="email"
             name="email"
