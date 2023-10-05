@@ -7,7 +7,10 @@ export async function POST(req: Request) {
   try {
     const hashedPassword = await bcrypt.hash(password, 12);
 
-    const user = prisma.user.create({
+    if (!password || !email || !username || !name)
+      return Response.json({ error: "Invalid credentials" }, { status: 422 });
+
+    const user = await prisma.user.create({
       data: {
         email,
         hashedPassword,
@@ -16,8 +19,8 @@ export async function POST(req: Request) {
       },
     });
 
-    return Response.json(user);
+    return Response.json({ user }, { status: 201 });
   } catch (error) {
-    return Response.json(error);
+    return Response.json({ error }, { status: 500 });
   }
 }
