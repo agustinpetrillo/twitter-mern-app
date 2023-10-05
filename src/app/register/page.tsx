@@ -36,7 +36,7 @@ export default function Register() {
         password: userRegister.password,
       });
 
-      router.push("/");
+      router.push("/home");
     } catch (error) {
       toast.error("Something went wrong.");
     }
