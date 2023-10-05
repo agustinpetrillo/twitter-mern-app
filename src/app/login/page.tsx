@@ -57,12 +57,24 @@ export default function Login() {
           <input
             type="email"
             name="email"
+            onChange={(e) =>
+              setUserData((prevState) => ({
+                ...prevState,
+                email: e.target.value,
+              }))
+            }
             placeholder="Email"
             className="p-2 text-black rounded-md outline-none"
           />
           <input
             type="password"
             name="password"
+            onChange={(e) =>
+              setUserData((prevState) => ({
+                ...prevState,
+                password: e.target.value,
+              }))
+            }
             placeholder="Password"
             className="p-2 mb-3 text-black rounded-md outline-none"
           />
