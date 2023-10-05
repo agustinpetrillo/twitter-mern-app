@@ -39,9 +39,9 @@ export default function Register() {
       router.push("/");
     } catch (error) {
       toast.error("Something went wrong.");
-    } finally {
-      setIsLoading(false);
     }
+
+    setIsLoading(false);
   };
 
   return (
