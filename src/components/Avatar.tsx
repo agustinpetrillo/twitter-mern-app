@@ -1,8 +1,9 @@
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 import { useCurrentUser } from "@/hooks/useCurrentUser";
+import Loader from "./reutilizable/Loader";
 
-export default function Avatar({ userId }: AvatarProps) {
+export default function Avatar({ userId, big }: AvatarProps) {
   const { data } = useCurrentUser(userId);
   const router = useRouter();
 
@@ -12,12 +13,14 @@ export default function Avatar({ userId }: AvatarProps) {
     router.push(`/user/${userId}`);
   };
 
+  if (!data) return <Loader />;
+
   return (
     <Image
       src={data.image || "/images/profile-without-image.png"}
       alt="avatar-image"
-      height={50}
-      width={50}
+      height={big ? 100 : 50}
+      width={big ? 100 : 50}
       className="object-cover transition-all rounded-full cursor-pointer hover:opacity-90"
       onClick={(e) => goToClickedProfile(e)}
     />

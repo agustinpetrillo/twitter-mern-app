@@ -11,6 +11,7 @@ interface HeaderProps {
 
 interface AvatarProps {
   userId: string;
+  big?: boolean;
 }
 
 interface UserRegister {
