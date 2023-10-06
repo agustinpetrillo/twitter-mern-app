@@ -11,7 +11,7 @@ export default function Avatar({ userId }: AvatarProps) {
   const goToClickedProfile = async (e: any) => {
     e.stopPropagation();
 
-    router.push(`/api/users/${userId}`);
+    router.push(`/user/${userId}`);
   };
 
   return (
