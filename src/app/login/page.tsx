@@ -42,7 +42,7 @@ export default function Login() {
 
   return (
     <div className="absolute top-0 left-0 flex items-center justify-center w-full min-h-screen bg-slate-900/60">
-      <div className="flex flex-col items-center max-w-lg p-10 space-y-3 bg-black rounded-lg">
+      <div className="flex flex-col items-center max-w-md p-10 space-y-3 bg-black rounded-lg">
         <div className="flex items-center justify-between w-full mb-3">
           <h1 className="text-xl font-semibold">Login</h1>
           <Link href="/">
@@ -68,7 +68,7 @@ export default function Login() {
               }))
             }
             placeholder="Email"
-            className="p-2 text-black rounded-md outline-none"
+            className="p-2 text-gray-200 bg-black border border-gray-600 rounded-md outline-none"
           />
           <input
             type="password"
@@ -80,7 +80,7 @@ export default function Login() {
               }))
             }
             placeholder="Password"
-            className="p-2 mb-3 text-black rounded-md outline-none"
+            className="p-2 mb-3 text-gray-200 bg-black border border-gray-600 rounded-md outline-none"
           />
           <button className="p-4 transition-all bg-blue-500 rounded-full hover:bg-opacity-70">
             Login

@@ -72,7 +72,7 @@ export default function Register() {
               }))
             }
             name="name"
-            className="p-2 text-black rounded-md outline-none"
+            className="p-2 text-gray-200 bg-black border border-gray-600 rounded-md outline-none"
           />
           <input
             type="text"
@@ -84,7 +84,7 @@ export default function Register() {
               }))
             }
             name="username"
-            className="p-2 text-black rounded-md outline-none"
+            className="p-2 text-gray-200 bg-black border border-gray-600 rounded-md outline-none"
           />
           <input
             type="email"
@@ -96,7 +96,7 @@ export default function Register() {
               }))
             }
             name="email"
-            className="p-2 text-black rounded-md outline-none"
+            className="p-2 text-gray-200 bg-black border border-gray-600 rounded-md outline-none"
           />
           <input
             type="password"
@@ -108,7 +108,7 @@ export default function Register() {
               }))
             }
             name="password"
-            className="p-2 mb-3 text-black rounded-md outline-none"
+            className="p-2 text-gray-200 bg-black border border-gray-600 rounded-md outline-none"
           />
           <button className="p-4 transition-all bg-blue-500 rounded-full hover:bg-opacity-70">
             Register
