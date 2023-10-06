@@ -17,7 +17,7 @@ export default function Sidebar() {
         <BsTwitter
           size={28}
           color="white"
-          className="cursor-pointer"
+          className="m-auto mb-4 cursor-pointer"
           onClick={() => router.push("/home")}
         />
         {SideNavbar.map((items) => (
@@ -37,13 +37,13 @@ export default function Sidebar() {
           />
         )}
         {session ? (
-          <button className="flex items-center justify-center p-4 m-auto text-xl transition-all rounded-full cursor-pointer bg-sky-500 hover:bg-opacity-80">
+          <button className="flex items-center justify-center w-3/4 p-4 m-auto mt-2 text-xl transition-all rounded-full cursor-pointer bg-sky-500 hover:bg-opacity-80">
             Tweet
           </button>
         ) : (
           <Link
             href="/login"
-            className="flex items-center justify-center p-4 m-auto text-xl transition-all rounded-full cursor-pointer bg-sky-500 hover:bg-opacity-80"
+            className="flex items-center justify-center w-3/4 p-4 m-auto mt-2 text-xl transition-all rounded-full cursor-pointer bg-sky-500 hover:bg-opacity-80"
           >
             Login
           </Link>

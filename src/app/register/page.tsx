@@ -49,7 +49,7 @@ export default function Register() {
       <div className="flex flex-col items-center max-w-lg p-10 space-y-3 bg-black rounded-lg">
         <div className="flex items-center justify-between w-full mb-3">
           <h1 className="text-xl font-semibold">Register</h1>
-          <Link href="/">
+          <Link href="/home">
             <AiOutlineClose
               size={20}
               color="white"

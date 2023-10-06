@@ -9,6 +9,10 @@ interface HeaderProps {
   name: string;
 }
 
+interface AvatarProps {
+  userId: string;
+}
+
 interface UserRegister {
   username: string;
   name: string;

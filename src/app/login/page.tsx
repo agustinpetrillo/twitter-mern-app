@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import axios from "axios";
+// import axios from "axios";
 import toast from "react-hot-toast";
 import { AiOutlineClose } from "react-icons/ai";
 import { signIn } from "next-auth/react";
@@ -20,10 +20,10 @@ export default function Login() {
     setIsLoading(true);
 
     try {
-      await axios.post("/api/login", {
-        email: userData.email,
-        password: userData.password,
-      });
+      // await axios.post("/api/login", {
+      //   email: userData.email,
+      //   password: userData.password,
+      // });
 
       signIn("credentials", {
         email: userData.email,
@@ -45,7 +45,7 @@ export default function Login() {
       <div className="flex flex-col items-center max-w-md p-10 space-y-3 bg-black rounded-lg">
         <div className="flex items-center justify-between w-full mb-3">
           <h1 className="text-xl font-semibold">Login</h1>
-          <Link href="/">
+          <Link href="/home">
             <AiOutlineClose
               size={20}
               color="white"
