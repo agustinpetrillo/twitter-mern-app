@@ -1,7 +1,8 @@
 interface IconsProps {
   name: string;
-  href: string;
   icon: IconType;
+  href: string;
+  onClick?: () => void;
 }
 
 interface HeaderProps {
