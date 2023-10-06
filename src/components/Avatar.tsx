@@ -14,8 +14,8 @@ export default function Avatar({ userId }: AvatarProps) {
 
   return (
     <Image
-      src={data || "/images/profile-without-image.png"}
-      alt={data}
+      src={data.image || "/images/profile-without-image.png"}
+      alt="avatar-image"
       height={50}
       width={50}
       className="object-cover transition-all rounded-full cursor-pointer hover:opacity-90"
