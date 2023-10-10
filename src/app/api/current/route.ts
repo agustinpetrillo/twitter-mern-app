@@ -1,10 +1,13 @@
 import { NextResponse } from "next/server";
 import { getServerSession } from "next-auth/next";
 import prisma from "@/libs/prismadb";
+import { authOptions } from "@/utils/authOptions";
 
 export async function GET(req: Request, res: Response) {
   try {
-    const session = await getServerSession();
+    const session = await getServerSession(authOptions);
+
+    console.log(session);
 
     if (!session?.user?.email) throw new Error("Not signed in");
 
