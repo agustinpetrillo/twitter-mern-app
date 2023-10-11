@@ -7,8 +7,6 @@ export async function GET(req: Request, res: Response) {
   try {
     const session = await getServerSession(authOptions);
 
-    console.log(session);
-
     if (!session?.user?.email) throw new Error("Not signed in");
 
     const currentUser = await prisma.user.findUnique({
