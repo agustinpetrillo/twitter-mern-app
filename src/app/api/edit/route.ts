@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import prisma from "@/libs/prismadb";
+import connectToDb from "@/utils/connectToPrisma";
 
 export async function PATCH(req: Request, res: Response) {
   try {
@@ -11,6 +12,8 @@ export async function PATCH(req: Request, res: Response) {
         { message: "Invalid name or username" },
         { status: 422 }
       );
+
+      await connectToDb()
 
     const updatedUser = prisma.user.update({
       where: {
@@ -28,5 +31,7 @@ export async function PATCH(req: Request, res: Response) {
     return NextResponse.json({updatedUser}, {status: 201})
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
+  } finally {
+    await prisma.$disconnect()
   }
 }

@@ -1,6 +1,7 @@
 import bcrypt from "bcrypt";
 import prisma from "@/libs/prismadb";
 import { NextResponse } from "next/server";
+import connectToDb from "@/utils/connectToPrisma";
 
 export async function POST(req: Request, res: Response) {
   const { password, email, username, name } = await req.json();
@@ -10,6 +11,8 @@ export async function POST(req: Request, res: Response) {
 
     if (!password || !email || !username || !name)
       return Response.json({ error: "Invalid credentials" }, { status: 422 });
+
+    await connectToDb();
 
     const existingUser = await prisma.user.findFirst({ where: { email } });
 
@@ -31,5 +34,7 @@ export async function POST(req: Request, res: Response) {
     return NextResponse.json({ user }, { status: 201 });
   } catch (error: any) {
     return NextResponse.json({ error: error.message }, { status: 500 });
+  } finally {
+    await prisma.$disconnect();
   }
 }
