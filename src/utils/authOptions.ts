@@ -27,17 +27,6 @@ export const authOptions: NextAuthOptions = {
         },
       },
       async authorize(credentials, req) {
-        // const res = axios.post("/api/login", {
-        //   email: credentials?.email,
-        //   password: credentials?.password,
-        // });
-
-        // const user = (await res).data;
-
-        // if (user) return user;
-
-        // return null;
-
         if (!credentials?.email || !credentials?.password)
           throw new Error("Invalid credentials");
 
@@ -63,9 +52,6 @@ export const authOptions: NextAuthOptions = {
   // debug: process.env.NODE_ENV === "development",
   session: {
     strategy: "jwt",
-  },
-  jwt: {
-    secret: process.env.NEXTAUTH_JWT_SECRET,
   },
   secret: process.env.NEXTAUTH_SECRET,
 
